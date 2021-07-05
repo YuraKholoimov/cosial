@@ -1,0 +1,16 @@
+.header> img{
+    box-shadow: 0 0 20px 10px rgb(18, 156, 149);
+    margin: 3em;
+    height: 60px;
+    width: 130px;
+}
+.header {
+    position: relative;
+    background-image: url(https://static.miraheze.org/closinglogosgroupwiki/b/bf/Cartoon_Network_%282010%29.png);
+    background-position: 50%;
+   
+}
+
+.header{
+    grid-area: h;
+  }

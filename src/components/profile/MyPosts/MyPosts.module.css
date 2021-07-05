@@ -1,0 +1,23 @@
+textarea {
+ border-radius: 0%;
+ border:outset 10px gold;
+ width: 865px;
+ background: rgb(236, 219, 143);
+ margin: 2%;
+ 
+}
+
+button {
+  background: red;
+  height: 40px;
+  width: 400px;
+  margin: 0 0 60px 40px;
+}
+
+.post {
+ 
+}
+
+.postBlock {
+  
+}

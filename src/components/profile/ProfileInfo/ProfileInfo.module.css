@@ -1,0 +1,10 @@
+.contentLogo img {
+  border:rgb(185, 51, 51) 10px inset;
+  margin: 0em;
+  max-width: 57em;
+  
+}
+
+.descriptionBlock {
+  padding: 10px;
+}
