@@ -40,42 +40,40 @@ let store = {
         ]
     
     },
+    _callSubscriber() {},
+
     getState() {
         return this._state
     },
-    renderTree(){},
-    reRender(observer) {
-        this.renderTree = observer
+    subscribe(observer) {
+        this._callSubscriber = observer
     },
-    addMessage() {
-        let newMessage = {
-            id: 1,
-            message: this._state.dialogPage.inputMessage 
+    dispatch(action) {
+        if (action.type === "ADD-POST") {
+            let newPost = {
+                id: 6,
+                message: this._state.profilePage.inputText,
+                like: 20
+            }
+            this._state.profilePage.postData.unshift(newPost)
+            this._state.profilePage.inputText = ""
+            this._callSubscriber(this._state)
+        } else if (action.type === "CHANGE-INPUT-TEXT-AREA") {
+            this._state.profilePage.inputText = action.newText
+            this._callSubscriber(this._state)
+        } else if(action.type === "ADD-MESSAGE") {
+            let newMessage = {
+                id: 1,
+                message: this._state.dialogPage.inputMessage 
+            }
+            this._state.dialogPage.messages.push(newMessage)
+            this._state.dialogPage.inputMessage = ""
+            this._callSubscriber(this._state)
+        } else if (action.type === "CHANGE-INPUT-TEXT-MESSAGE") {
+            this._state.dialogPage.inputMessage = action.newText
+            this._callSubscriber(this._state)
         }
-        this._state.dialogPage.messages.push(newMessage)
-        this._state.dialogPage.inputMessage = ""
-        this.renderTree(this.state)
-    },
-    changeInputTextMessage(newText) {
-        this._state.dialogPage.inputMessage = newText
-        this.renderTree(this.state)
-    },
-    addPost() {
 
-        let newPost = {
-            id: 6,
-            message: this._state.profilePage.inputText,
-            like: 20
-        }
-    
-        this._state.profilePage.postData.unshift(newPost)
-        this._state.profilePage.inputText = ""
-        this.renderTree(this.state)
-    },
-    changeInputTextArea(newText) {
-    
-        this._state.profilePage.inputText = newText
-        this.renderTree(this.state)
     }
 }
 

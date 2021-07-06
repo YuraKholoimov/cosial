@@ -8,7 +8,7 @@ import Profile from './components/profile/Profile';
 import Settings from './components/Settings/Settings';
 
 function App(props) {
-
+  
   return (
     <BrowserRouter>
         <div className="parallax">
@@ -18,8 +18,12 @@ function App(props) {
               <Header />
               <NavBar state={props.state.SideBareFriends} />
               <div className="app-wrapper-content">
-                <Route path="/Profile" render={() => <Profile profilePage={props.state.profilePage} addPost={props.addPost} changeInputTextArea={props.changeInputTextArea}/>} />
-                <Route path="/Dialog" render={() => <Dialogs dialogPage={props.state.dialogPage} addMessage={props.addMessage} changeInputTextMessage={props.changeInputTextMessage}/>} />
+                <Route path="/Profile" render={ () => <Profile 
+                      profilePage={props.state.profilePage} 
+                      dispatch={props.dispatch} />} />
+                <Route path="/Dialog" render={() => <Dialogs 
+                      dialogPage={props.state.dialogPage} 
+                      dispatch={props.dispatch} />} />
                 <Route path="/News" render={() => <News />} />
                 <Route path="/settings" render={() => <Settings />} />
               </div>

@@ -9,11 +9,11 @@ const MyPosts = (props) => {
 
   let newPostElement = React.createRef()
 
-  let addPost = () => { props.addPost() }
+  let addPost = () => { props.dispatch({type: "ADD-POST"}) }
 
   let changeText = () => {
     let text = newPostElement.current.value
-    props.changeInputTextArea(text)
+    props.dispatch( {type: "CHANGE-INPUT-TEXT-AREA", newText: text } )
   }
 
   return (

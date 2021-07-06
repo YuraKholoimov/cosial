@@ -9,8 +9,8 @@ const Profile = (props) => {
       <MyPosts 
         postData={props.profilePage.postData} 
         inputText={props.profilePage.inputText} 
-        addPost={props.addPost}
-        changeInputTextArea={props.changeInputTextArea}/>
+        dispatch={props.dispatch}
+        />
     </div>
   )
 }
