@@ -18,14 +18,19 @@ function App(props) {
               <Header />
               <NavBar state={props.state.SideBareFriends} />
               <div className="app-wrapper-content">
+
                 <Route path="/Profile" render={ () => <Profile 
                       profilePage={props.state.profilePage} 
                       dispatch={props.dispatch} />} />
+
                 <Route path="/Dialog" render={() => <Dialogs 
                       dialogPage={props.state.dialogPage} 
                       dispatch={props.dispatch} />} />
+
                 <Route path="/News" render={() => <News />} />
-                <Route path="/settings" render={() => <Settings />} />
+
+                <Route path="/settings" render={() => <Settings />} />\
+                
               </div>
           </div>
       </div>

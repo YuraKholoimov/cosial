@@ -1,3 +1,8 @@
+const ADD_POST = "ADD-POST"
+const CHANGE_INPUT_TEXT_AREA = "CHANGE-INPUT-TEXT-AREA"
+const ADD_MESSAGE = "ADD-MESSAGE"
+const CHANGE_INPUT_TEXT_MESSAGE = "CHANGE-INPUT-TEXT-MESSAGE"
+
 let store = {
     _state: {
         dialogPage: {
@@ -49,7 +54,7 @@ let store = {
         this._callSubscriber = observer
     },
     dispatch(action) {
-        if (action.type === "ADD-POST") {
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: 6,
                 message: this._state.profilePage.inputText,
@@ -58,10 +63,12 @@ let store = {
             this._state.profilePage.postData.unshift(newPost)
             this._state.profilePage.inputText = ""
             this._callSubscriber(this._state)
-        } else if (action.type === "CHANGE-INPUT-TEXT-AREA") {
+
+        } else if (action.type === CHANGE_INPUT_TEXT_AREA ) {
             this._state.profilePage.inputText = action.newText
             this._callSubscriber(this._state)
-        } else if(action.type === "ADD-MESSAGE") {
+
+        } else if(action.type === ADD_MESSAGE ) {
             let newMessage = {
                 id: 1,
                 message: this._state.dialogPage.inputMessage 
@@ -69,12 +76,24 @@ let store = {
             this._state.dialogPage.messages.push(newMessage)
             this._state.dialogPage.inputMessage = ""
             this._callSubscriber(this._state)
-        } else if (action.type === "CHANGE-INPUT-TEXT-MESSAGE") {
-            this._state.dialogPage.inputMessage = action.newText
+
+        } else if (action.type === CHANGE_INPUT_TEXT_MESSAGE) {
+            this._state.dialogPage.inputMessage = action.message
             this._callSubscriber(this._state)
         }
 
     }
 }
+
+export const addPostActionCreator = () => ({type: "ADD-POST" })
+
+export const changeInputTextAreaActionCreater = (text) =>({
+    type: "CHANGE-INPUT-TEXT-AREA",
+    newText: text
+})
+
+export const addMessageActionCreator = () => ({type: "ADD-MESSAGE"})
+  
+export const changeInputTextMessageActionCreator = (text) => ({ type: "CHANGE-INPUT-TEXT-MESSAGE", message: text})
 
 export default store;
