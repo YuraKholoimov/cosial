@@ -1,34 +1,34 @@
 import s from './MyPosts.module.css' 
 import Post from './Post/Post'
 import React from 'react';
-import { addPostActionCreator, changeInputTextAreaActionCreater } from '../../../Redux/state';
 
 
 const MyPosts = (props) => {
-  
-  const postsElements = props.profilePage.postData.map(p => <Post message={p.message} like={p.like} />);
 
-  let addPost = () => { props.dispatch( addPostActionCreator() )}
+  const postsElements = props.profilePage.postData
+    .map(p => <Post message={p.message} like={p.like} />);
 
-  let changeText = (e) => {
+  const onChangeText = (e) => {
     let text = e.target.value
-    props.dispatch( changeInputTextAreaActionCreater(text) )
+    props.updateNewPostText(text)
   }
+ 
+  const onAddPost = () => {props.addPost()}
 
   return (
     <div className={s.postBlock}>
       <div className={s.post}>
         <div>
           <textarea 
-            onChange={changeText}  
+            onChange={onChangeText}  
             value={props.profilePage.inputText}>
           </textarea>
         </div>
         <div>
           <button 
-            onClick={addPost}>ADD POST
+            onClick={onAddPost}>ADD POST
           </button>
-          <button>ERASE</button>
+          <button>EREASE</button>
         </div>
       </div>
       <div className={s.post}>

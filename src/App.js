@@ -1,6 +1,6 @@
 import {BrowserRouter, Route} from 'react-router-dom'
 import './App.css';
-import Dialogs from './components/Dialogs/Dialogs';
+import DialogContainer from './components/Dialogs/DialogsContainer';
 import Header from './components/header/Header';
 import NavBar from './components/navBar/NavBar';
 import News from './components/News/News';
@@ -16,16 +16,12 @@ function App(props) {
           <div className="parallax__layer parallax__layer--base"></div>
           <div className="app-wrapper">
               <Header />
-              <NavBar state={props.state.SideBareFriends} />
+              <NavBar state={props.store.getState().SideBareFriends} />
               <div className="app-wrapper-content">
 
-                <Route path="/Profile" render={ () => <Profile 
-                      profilePage={props.state.profilePage} 
-                      dispatch={props.dispatch} />} />
+                <Route path="/Profile" render={ () => <Profile store = {props.store} />} />
 
-                <Route path="/Dialog" render={() => <Dialogs 
-                      dialogPage={props.state.dialogPage} 
-                      dispatch={props.dispatch} />} />
+                <Route path="/Dialog" render={() => <DialogContainer store = {props.store} />} />
 
                 <Route path="/News" render={() => <News />} />
 
