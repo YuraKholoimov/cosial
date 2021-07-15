@@ -16,7 +16,7 @@ function App(props) {
           <div className="parallax__layer parallax__layer--base"></div>
           <div className="app-wrapper">
               <Header />
-              <NavBar state={props.store.getState().SideBareFriends} />
+              <NavBar  />
               <div className="app-wrapper-content">
 
                 <Route path="/Profile" render={ () => <Profile store = {props.store} />} />

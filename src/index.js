@@ -4,15 +4,15 @@ import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-
+import {Provider} from 'react-redux'
 
 export let renderEntireTree = (state) => {
   
     ReactDOM.render(
       <React.StrictMode>
-        <App store = {store} 
-        // dispatch={store.dispatch.bind(store)}  
-        />
+        <Provider store={store} >
+          <App />
+        </Provider>
       </React.StrictMode>,
       document.getElementById('root')
     );

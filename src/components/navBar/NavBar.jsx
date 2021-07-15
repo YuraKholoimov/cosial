@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import s from './NavBar.module.css'
-import SideBareFriends from './SideBarFriends/SideBareFriennds'
 
-const NavBar = (props) => {
+import SideBareFriendsContainer from './SideBarFriends/SideBareFriendsContainer'
+
+const NavBar = () => {
 
     return (
         <div>
@@ -24,7 +25,7 @@ const NavBar = (props) => {
                 </div>
 
                 <div >
-                    <SideBareFriends state={props.state} />
+                    <SideBareFriendsContainer />
                 </div>
             </nav>
 
