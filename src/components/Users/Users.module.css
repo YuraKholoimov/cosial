@@ -1,0 +1,15 @@
+.buttonGoBack img{
+    height: 130px;
+    width: 130px;
+}
+.userAvatar img{
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+}
+.frameOfUser {
+    border: 1px solid black;
+    margin: 20px;
+    padding: 10px;
+    height: 300px;
+}

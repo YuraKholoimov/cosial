@@ -15,18 +15,24 @@ const initialState = {
 
 const profilePageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
-            let newPost = {
-                id: 6,
-                message: state.inputText,
-                like: 20
+        case ADD_POST: {
+            let newPost = {id: 6, message: state.inputText, like: 20}
+            return {...state,
+                postData: [newPost, ...state.postData],
+                inputText: ""
             }
-            state.postData.unshift(newPost)
-            state.inputText = ""
-            return state
-        case CHANGE_INPUT_TEXT_AREA:
-            state.inputText = action.newText
-            return state
+            // stateCopy.postData = [...state.postData]
+            // stateCopy.postData.unshift(newPost)
+            // stateCopy.inputText = ""
+            // return stateCopy
+        }
+        case CHANGE_INPUT_TEXT_AREA: {
+            // let stateCopy = {...state}
+            // stateCopy.inputText = action.newText
+            return {...state, 
+                inputText: action.newText
+            }
+        }
         default:
             return state
     }

@@ -31,11 +31,10 @@ const mapStateToProps = (state) => {
 const mapDispatchesToProps = (dispatch) => {
   return {
     updateNewPostText: (text) => {
-      let action = changeInputTextAreaActionCreater(text)
-      dispatch( action )
-    },
+      dispatch( changeInputTextAreaActionCreater(text) )
+    }, 
     addPost: () => {
-      dispatch(addPostActionCreator())
+      dispatch( addPostActionCreator() )
     }
   }
 }

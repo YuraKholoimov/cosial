@@ -6,6 +6,7 @@ import NavBar from './components/navBar/NavBar';
 import News from './components/News/News';
 import Profile from './components/profile/Profile';
 import Settings from './components/Settings/Settings';
+import UsersContainer from './components/Users/UsersContainer';
 
 function App(props) {
   
@@ -18,15 +19,11 @@ function App(props) {
               <Header />
               <NavBar  />
               <div className="app-wrapper-content">
-
-                <Route path="/Profile" render={ () => <Profile store = {props.store} />} />
-
-                <Route path="/Dialog" render={() => <DialogContainer store = {props.store} />} />
-
+                <Route path="/Profile" render={ () => <Profile />} />
+                <Route path="/Dialog" render={() => <DialogContainer  />} />
                 <Route path="/News" render={() => <News />} />
-
-                <Route path="/settings" render={() => <Settings />} />\
-                
+                <Route path="/settings" render={() => <Settings />} /> 
+                <Route path="/Users" render={() => <UsersContainer />} />
               </div>
           </div>
       </div>
