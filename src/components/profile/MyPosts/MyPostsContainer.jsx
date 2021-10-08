@@ -1,6 +1,6 @@
-import { addPostActionCreator, changeInputTextAreaActionCreater } from '../../../Redux/profilePage-reducer';
+import { addPostThunk} from '../../../Redux/profilePage-reducer';
 import MyPosts from './MyPosts';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 // const MyPostsContainer = (props) => {
 
@@ -28,17 +28,7 @@ const mapStateToProps = (state) => {
     profilePage: state.profilePage
   }
 }
-const mapDispatchesToProps = (dispatch) => {
-  return {
-    updateNewPostText: (text) => {
-      dispatch( changeInputTextAreaActionCreater(text) )
-    }, 
-    addPost: () => {
-      dispatch( addPostActionCreator() )
-    }
-  }
-}
 
-const MyPostsContainer = connect(mapStateToProps,mapDispatchesToProps )(MyPosts)
+const MyPostsContainer = connect(mapStateToProps, { addPostThunk} )(MyPosts)
 
 export default MyPostsContainer

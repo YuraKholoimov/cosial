@@ -1,6 +1,10 @@
-const ADD_POST = "ADD-POST"
-const CHANGE_INPUT_TEXT_AREA = "CHANGE-INPUT-TEXT-AREA"
+import usersApi, { profileAPI } from "../components/api/api"
 
+//--------------------------------------------   ACTION TYPES
+const ADD_POST = "ADD_POST"
+const SET_USER_PROFILE = "SET_USER_PROFILE"
+const SET_STATUS = "SET_STATUS"
+//----------------------------------------------  STATE
 const initialState = {
     postData: [
         {id:1, message: "Hi, how are you?", like:23},
@@ -9,40 +13,66 @@ const initialState = {
         {id:4, message: "Hi, how are you?", like: 13},
         {id:5, message: "Hi, yo yo yo!!!", like: 13}
     ],
-    
-    inputText: ""         
+    userProfile: null,
+    status: ""
 }
+//-----------------------------------------------  REDUSER
 
 const profilePageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
-            let newPost = {id: 6, message: state.inputText, like: 20}
-            return {...state,
-                postData: [newPost, ...state.postData],
-                inputText: ""
-            }
+            let newPost = {id: 6, message: action.newPost, like: 20}
             // stateCopy.postData = [...state.postData]
             // stateCopy.postData.unshift(newPost)
             // stateCopy.inputText = ""
             // return stateCopy
+            return {...state,
+                postData: [newPost, ...state.postData]
+            }
         }
-        case CHANGE_INPUT_TEXT_AREA: {
-            // let stateCopy = {...state}
-            // stateCopy.inputText = action.newText
+        case SET_USER_PROFILE:  {
             return {...state, 
-                inputText: action.newText
+                userProfile: action.userProfile
+            }
+        }
+        case SET_STATUS:  {
+            return {...state, 
+                status: action.status
             }
         }
         default:
             return state
     }
 }
+//--------------------------------------------------- ACTION CREATORS
 
-export const addPostActionCreator = () => ({type: "ADD-POST" })
+const addPostActionCreator = (newPost) => ({type: ADD_POST, newPost})
+const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userProfile})
+const setStatus = (status) => ({type: SET_STATUS, status})
 
-export const changeInputTextAreaActionCreater = (text) =>({
-    type: "CHANGE-INPUT-TEXT-AREA",
-    newText: text
-})
+//-------------------------------------------------- THUNK
+
+export const profileThunk = (userId) => async (dispatch) => {
+    let response = await usersApi.profile(userId)
+    dispatch(setUserProfile(response.data))
+}
+
+export const addPostThunk = (newPost) => (dispach) => {
+    dispach(addPostActionCreator(newPost))
+}
+
+export const getStatusThunk = (userId) => async (dispatch) => {
+    let response = await profileAPI.getStatus(userId)
+    dispatch(setStatus(response.data))
+}
+
+export const updateStatusThunk = (status) => async (dispatch) => {
+    let response = await profileAPI.updateStatus(status)
+        
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status))
+    }
+    
+}
 
 export default profilePageReducer

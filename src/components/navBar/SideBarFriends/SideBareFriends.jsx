@@ -2,7 +2,7 @@ import DialogItem from "../../Dialogs/DialogItems/DialogItems"
 import s from './SideBareFriends.module.css'
 const SideBareFriends = (props) => {
     
-    let dialogItemsElement = props.state.map((el) => <DialogItem name={el.name} id={el.id} img={el.avatar} />)
+    let dialogItemsElement = props.state.map((el) => <DialogItem key={el.id} name={el.name} id={el.id} img={el.avatar} />)
 
     return (
         <div className={s.sideBareFriends}>

@@ -8,3 +8,11 @@
 .descriptionBlock {
   padding: 10px;
 }
+
+.profileInfo__profileStatus {
+  padding: 10px;
+  font-size: 44px;
+  font-weight: 900;
+  font-family:'Times New Roman', Times, serif ;
+  
+}

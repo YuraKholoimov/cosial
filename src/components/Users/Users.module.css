@@ -1,6 +1,6 @@
 .buttonGoBack img{
-    height: 130px;
-    width: 130px;
+    height:50px;
+    width: 50px;
 }
 .userAvatar img{
     height: 130px;
@@ -12,4 +12,18 @@
     margin: 20px;
     padding: 10px;
     height: 300px;
+}
+.pageCount {
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 26px;
+
+}
+.selectedPage {
+    font-weight: bold;
+    font-size: 34px;;
 }
